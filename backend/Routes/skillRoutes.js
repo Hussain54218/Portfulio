@@ -19,3 +19,4 @@ router.get("/download-cv", downloadCV);        // دانلود CV
 router.post("/upload-cv", upload.single("cv"), uploadCV); // آپلود CV (Admin)
 
 export default router;
+
