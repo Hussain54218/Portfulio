@@ -9,7 +9,7 @@ import projectRoutes from "./Routes/projectRoutes.js";
 import messageRoutes from "./Routes/messageRoutes.js";
 import homeRoutes from "./Routes/homeRoutes.js"; 
 import skillRoutes from "./Routes/skillRoutes.js"
-import aboutRoutes from "./routes/about.js";
+import aboutRoutes from "./Routes/about.js";
 import { notFound, errorHandler } from "./middlewares/errorMiddleware.js";
 
 dotenv.config();
