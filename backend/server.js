@@ -8,7 +8,7 @@ import authRoutes from "./Routes/authRoutes.js";
 import projectRoutes from "./Routes/projectRoutes.js";
 import messageRoutes from "./Routes/messageRoutes.js";
 import homeRoutes from "./Routes/homeRoutes.js"; 
-import skillRoutes from "./routes/skillRoutes.js"; // ✅ اضافه شد
+import skillRoutes from "./Routes/skillRoutes.js"
 import aboutRoutes from "./routes/about.js";
 import { notFound, errorHandler } from "./middlewares/errorMiddleware.js";
 
