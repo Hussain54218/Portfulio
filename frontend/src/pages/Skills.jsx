@@ -23,26 +23,16 @@ function Skills() {
     fetchSkills();
   }, []);
 
-  // Function to get icon based on string stored in DB
   const getIcon = (iconName) => {
     if (!iconName) return null;
-    // Search all icons from FaIcons and SiIcons
     return FaIcons[iconName] || SiIcons[iconName] || null;
   };
 
-  // رنگ‌های هماهنگ با پالت رنگ کامپوننت Home
   const iconColors = [
-    'text-blue-400', 
-    'text-purple-400', 
-    'text-blue-300', 
-    'text-purple-300', 
-    'text-indigo-400',
-    'text-blue-200',
-    'text-purple-200',
-    'text-indigo-300'
+    'text-blue-400', 'text-purple-400', 'text-blue-300', 'text-purple-300', 
+    'text-indigo-400', 'text-blue-200', 'text-purple-200', 'text-indigo-300'
   ];
 
-  // نگاشت نام مهارت‌ها به رنگ‌های خاص (اختیاری - برای ثبات رنگ)
   const skillColorMap = {
     'react': 'text-blue-400',
     'javascript': 'text-yellow-400',
@@ -63,15 +53,9 @@ function Skills() {
 
   const getColorForSkill = (skillName) => {
     const lowerCaseName = skillName.toLowerCase();
-    
-    // بررسی آیا نام مهارت در نگاشت وجود دارد
     for (const [key, value] of Object.entries(skillColorMap)) {
-      if (lowerCaseName.includes(key)) {
-        return value;
-      }
+      if (lowerCaseName.includes(key)) return value;
     }
-    
-    // اگر نام مهارت در نگاشت نبود، یک رنگ تصادفی انتخاب کن
     return iconColors[Math.floor(Math.random() * iconColors.length)];
   };
 
@@ -88,20 +72,27 @@ function Skills() {
 
   return (
     <section id="skills" className="relative py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 overflow-hidden">
-      {/* Decorative elements */}
+      {/* Decorative blobs */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-purple-500/10 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
       <div className="absolute top-0 right-0 w-72 h-72 bg-blue-500/10 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
       <div className="absolute bottom-0 left-1/2 w-72 h-72 bg-indigo-500/10 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent mb-4">
             My Skills
           </h2>
-          <p className="text-xl text-blue-200 max-w-3xl mx-auto">
+          <p className="text-xl text-blue-200 max-w-3xl mx-auto mb-4">
             Specializations and technologies I use in my projects
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto mt-6 rounded-full"></div>
+
+          {/* Download CV Button */}
+          <button
+            onClick={() => window.open(`${API.defaults.baseURL}/download-cv`, "_blank")}
+            className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-md transition"
+          >
+            Download CV
+          </button>
         </div>
 
         {skills.length === 0 ? (
@@ -118,7 +109,7 @@ function Skills() {
             {skills.map((skill, index) => {
               const IconComponent = getIcon(skill.icon);
               const color = getColorForSkill(skill.name);
-              
+
               return (
                 <div
                   key={skill._id}
@@ -127,10 +118,10 @@ function Skills() {
                 >
                   {/* Glow effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                  
+
                   {/* Decorative dot */}
                   <div className="absolute -top-2 -right-2 w-4 h-4 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
+
                   {IconComponent ? (
                     <IconComponent className={`text-5xl ${color} mb-5 transition-transform duration-300 group-hover:scale-110`} />
                   ) : (
@@ -138,12 +129,11 @@ function Skills() {
                       <span className="text-2xl text-blue-400">?</span>
                     </div>
                   )}
-                  
+
                   <h3 className="text-lg font-semibold text-white text-center group-hover:text-blue-300 transition-colors duration-300">
                     {skill.name}
                   </h3>
-                  
-                  {/* Additional hover effect */}
+
                   <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-b-2xl scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                 </div>
               );
@@ -151,7 +141,7 @@ function Skills() {
           </div>
         )}
 
-        {/* Additional decorative section */}
+        {/* Decorative bottom section */}
         <div className="text-center mt-16">
           <div className="inline-flex items-center bg-white/5 backdrop-blur-md border border-white/10 rounded-full shadow-md px-6 py-3">
             <div className="flex space-x-2 mr-3">
@@ -164,7 +154,6 @@ function Skills() {
         </div>
       </div>
 
-      {/* Add animation to style */}
       <style jsx>{`
         @keyframes blob {
           0% { transform: translate(0px, 0px) scale(1); }
@@ -172,15 +161,9 @@ function Skills() {
           66% { transform: translate(-20px, 20px) scale(0.9); }
           100% { transform: translate(0px, 0px) scale(1); }
         }
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
+        .animate-blob { animation: blob 7s infinite; }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
       `}</style>
     </section>
   );
