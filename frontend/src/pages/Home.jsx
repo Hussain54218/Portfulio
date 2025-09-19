@@ -24,7 +24,7 @@ function Home() {
   const imageSrc = data.image && !imageError
     ? data.image.startsWith("http")
       ? data.image
-      : `http://localhost:5000${data.image.startsWith("/") ? "" : "/"}${data.image}`
+      : `https://portfulio-5.onrender.com${data.image.startsWith("/") ? "" : "/"}${data.image}`
     : "/default-profile.png";
 
   return (
