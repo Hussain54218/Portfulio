@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api", // مسیر سرور
+  baseURL: "https://portfulio-5.onrender.com/api", // مسیر سرور
 });
 
 // اضافه کردن توکن به هدر درخواست‌ها
