@@ -43,7 +43,7 @@ function AdminSkills() {
 
   const fetchSkills = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/skills");
+      const response = await fetch("https://portfulio-5.onrender.com/api/skills");
       const data = await response.json();
       if (response.ok) {
         setSkills(data);
@@ -64,8 +64,8 @@ function AdminSkills() {
     
     try {
       const url = editingSkill 
-        ? `http://localhost:5000/api/skills/${editingSkill._id}`
-        : "http://localhost:5000/api/skills";
+        ? `https://portfulio-5.onrender.comapi/skills/${editingSkill._id}`
+        : "https://portfulio-5.onrender.com/api/skills";
       
       const method = editingSkill ? "PUT" : "POST";
       
@@ -98,7 +98,7 @@ function AdminSkills() {
     if (!window.confirm("آیا از حذف این مهارت اطمینان دارید؟")) return;
     
     try {
-      const response = await fetch(`http://localhost:5000/api/skills/${id}`, {
+      const response = await fetch(`https://portfulio-5.onrender.com/api/skills/${id}`, {
         method: "DELETE",
       });
 
@@ -143,7 +143,7 @@ function AdminSkills() {
       const formData = new FormData();
       formData.append("cv", cvFile);
 
-      const response = await fetch("http://localhost:5000/api/skills/upload-cv", {
+      const response = await fetch("https://portfulio-5.onrender.com/api/skills/upload-cv", {
         method: "POST",
         body: formData,
       });
