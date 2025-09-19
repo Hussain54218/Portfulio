@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -15,11 +15,18 @@ import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
+  const location = useLocation();
+
+  // مسیرهایی که Navbar و Footer نداشته باشند
+  const hideNavAndFooter = ["/admin", "/login"];
+
+  const showNavAndFooter = !hideNavAndFooter.includes(location.pathname);
+
   return (
     <AuthProvider>
       <ProjectProvider>
         <div className="flex flex-col min-h-screen">
-          <Navbar />
+          {showNavAndFooter && <Navbar />}
           <main className="flex-grow container mx-auto px-4 py-6">
             <Routes>
               <Route path="/" element={<Home />} />
@@ -31,14 +38,14 @@ function App() {
               <Route
                 path="/admin"
                 element={
-                  <ProtectedRoute>
+                  <ProtectedRoute adminOnly={true}>
                     <Admin />
                   </ProtectedRoute>
                 }
               />
             </Routes>
           </main>
-          <Footer />
+          {showNavAndFooter && <Footer />}
         </div>
       </ProjectProvider>
     </AuthProvider>
