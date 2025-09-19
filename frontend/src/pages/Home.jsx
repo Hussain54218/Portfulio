@@ -5,7 +5,7 @@ function Home() {
   const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/home")
+    fetch("https://portfulio-5.onrender.com/api/home")
       .then((res) => res.json())
       .then((info) => setData(info))
       .catch((err) => console.error(err));
