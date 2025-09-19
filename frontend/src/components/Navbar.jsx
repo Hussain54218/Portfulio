@@ -45,6 +45,7 @@ function Navbar() {
             <NavLink to="/projects" icon={<FaFolder />} onClick={closeMenu}>Projects</NavLink>
             <NavLink to="/skills" icon={<FaLightbulb />} onClick={closeMenu}>Skills</NavLink>
             <NavLink to="/contact" icon={<FaEnvelope />} onClick={closeMenu}>Contact</NavLink>
+            <NavLink to="/admin" icon={<FaEnvelope />} onClick={closeMenu}>SignIn</NavLink>
 
             {user && user.role === "admin" && (
               <Link
@@ -82,6 +83,7 @@ function Navbar() {
             <MobileNavLink to="/projects" icon={<FaFolder />} onClick={closeMenu}>Projects</MobileNavLink>
             <MobileNavLink to="/skills" icon={<FaLightbulb />} onClick={closeMenu}>Skills</MobileNavLink>
             <MobileNavLink to="/contact" icon={<FaEnvelope />} onClick={closeMenu}>Contact</MobileNavLink>
+            <MobileNavLink to="/admin" icon={<FaEnvelope />} onClick={closeMenu}>SignIn</MobileNavLink>
 
             {user && user.role === "admin" && (
               <MobileNavLink to="/admin" icon={<FaCog />} onClick={closeMenu} isAdmin={true}>
