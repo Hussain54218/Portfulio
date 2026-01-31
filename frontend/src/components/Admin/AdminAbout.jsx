@@ -32,7 +32,7 @@ function AdminAbout() {
   // fetch data
   useEffect(() => {
     setIsLoading(true);
-    fetch("https://portfulio-5.onrender.com/api/about")
+    fetch("http://localhost:5000/api/about")
       .then((res) => res.json())
       .then((data) => {
         if (data) {
@@ -127,8 +127,8 @@ function AdminAbout() {
     try {
       const method = editingId ? "PUT" : "POST";
       const url = editingId
-        ? `https://portfulio-5.onrender.com/api/about/${editingId}`
-        : "https://portfulio-5.onrender.com/api/about";
+        ? `http://localhost:5000/api/about/${editingId}`
+        : "http://localhost:5000/api/about";
 
       const bodyData = {
         ...aboutData,

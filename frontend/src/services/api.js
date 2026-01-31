@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://portfulio-5.onrender.com/api", // مسیر سرور
-});
+  baseURL:"http://localhost:5000/api"
+})
 
 // اضافه کردن توکن به هدر درخواست‌ها
 API.interceptors.request.use((req) => {

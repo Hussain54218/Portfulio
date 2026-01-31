@@ -5,7 +5,7 @@ function Home() {
   const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
-    fetch("https://portfulio-5.onrender.com/api/home")
+    fetch("http://localhost:5000/api/home")
       .then((res) => res.json())
       .then((info) => setData(info))
       .catch((err) => console.error(err));
@@ -20,12 +20,12 @@ function Home() {
     </div>
   );
 
-  // مسیر عکس هوشمند
   const imageSrc = data.image && !imageError
-    ? data.image.startsWith("http")
-      ? data.image
-      : `https://portfulio-5.onrender.com${data.image.startsWith("/") ? "" : "/"}${data.image}`
-    : "/default-profile.png";
+  ? data.image.startsWith("http")
+    ? data.image
+    : `http://localhost:5000${data.image}` // Just prepend host
+  : "/default-profile.png";
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white overflow-hidden relative">

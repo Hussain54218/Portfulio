@@ -4,7 +4,7 @@ function About() {
   const [aboutData, setAboutData] = useState(null);
 
   useEffect(() => {
-    fetch("https://portfulio-5.onrender.com/api/about")
+    fetch("http://localhost:5000/api/about")
       .then((res) => res.json())
       .then((data) => setAboutData(data))
       .catch((err) => console.error(err));
@@ -149,7 +149,7 @@ function About() {
               <div className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
             </div>
           </div>
-        </div>ش
+        </div>
       </div>
     </section>
   );
